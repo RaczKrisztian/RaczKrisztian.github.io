@@ -8,9 +8,25 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
    <link rel="stylesheet" href="css/lucky.css">
 </head>
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <body>
 
-   
     <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="#">Lucky</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,33 +34,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Főoldal</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Kávéfajták</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sütemények</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="#">Főoldal</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Kávéfajták</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Sütemények</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
             </ul>
         </div>
     </nav>
 
-    
     <div class="main-image">
         <img src="img/Coffees/hatter.webp" alt="Kávé kép" class="img-fluid">
     </div>
 
-    
     <div class="container">
         <h2 class="section-title text-center">Lucky - Kávéfajták</h2>
         <div class="row">
             
-            <div class="col-md-6 col-lg-3 mb-4">
+            <div class="col-md-6 col-lg-3 mb-4" onclick="showModal('Americano', 'img/Coffees/americano.jpg')">
                 <div class="card">
                     <img src="img/Coffees/americano.jpg" class="card-img-top" alt="Americano">
                     <div class="card-body">
@@ -52,8 +58,8 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="col-md-6 col-lg-3 mb-4">
+
+            <div class="col-md-6 col-lg-3 mb-4" onclick="showModal('Espresso', 'img/Coffees/espresso.jpg')">
                 <div class="card">
                     <img src="img/Coffees/espresso.jpg" class="card-img-top" alt="Espresso">
                     <div class="card-body">
@@ -61,8 +67,8 @@
                     </div>
                 </div>
             </div>
-           
-            <div class="col-md-6 col-lg-3 mb-4">
+
+            <div class="col-md-6 col-lg-3 mb-4" onclick="showModal('Cappuccino', 'img/Coffees/cappuccino.jpg')">
                 <div class="card">
                     <img src="img/Coffees/cappuccino.jpg" class="card-img-top" alt="Cappuccino">
                     <div class="card-body">
@@ -70,8 +76,8 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="col-md-6 col-lg-3 mb-4">
+
+            <div class="col-md-6 col-lg-3 mb-4" onclick="showModal('Latte Macchiato', 'img/Coffees/LatteMacchiato.jpg')">
                 <div class="card">
                     <img src="img/Coffees/LatteMacchiato.jpg" class="card-img-top" alt="Latte Macchiato">
                     <div class="card-body">
@@ -82,8 +88,37 @@
         </div>
     </div>
 
+  
+    <div class="modal fade" id="coffeeModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="" alt="Kávé kép" class="img-fluid mb-3">
+                    <p id="modalDescription">Kávé leírása itt jelenik meg.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Bezárás</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showModal(title, imageSrc) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('modalDescription').textContent = title + " leírása itt található.";
+            $('#coffeeModal').modal('show');
+        }
+    </script>
 </body>
 </html>
